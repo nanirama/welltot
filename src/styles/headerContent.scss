@@ -1,0 +1,42 @@
+@import './variables';
+
+
+header.page-header {
+    background-color: #ffffff;
+    background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 98%, rgba(0,0,0,0.3) 100%);
+}
+
+.header-content {
+
+  display: grid;
+  grid-template-columns: 50%;
+  grid-template-rows: 110px auto;
+  grid-template-areas: 
+    "header-logo header-sidebar";
+
+  .header-logo {
+    grid-area: header-logo;
+    place-self: start;
+    padding: 5px 0 5px 50px;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .header-sidebar{
+    grid-area: header-sidebar;
+    place-self: center end;
+    padding: 0 50px 0 0;
+  }
+
+
+
+}  
+
+
+@media only screen and (min-width: 992px) {
+
+
+
+}

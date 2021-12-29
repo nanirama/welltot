@@ -1,0 +1,35 @@
+@import './variables';
+
+.sectionBuyNow{
+  background-color: $color-primary;
+  width: 50%;
+  padding: 15px;
+  margin: 20px auto;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  a, a:link, a:visited, a:hover, a:active{
+    color: $color-copy-inverse;
+  }
+}
+
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+  .sectionBuyNow{
+
+
+
+  }
+}
+
+
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .sectionBuyNow{
+
+
+
+  }
+}

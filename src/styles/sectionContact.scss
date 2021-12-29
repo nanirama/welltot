@@ -1,0 +1,76 @@
+@import './variables';
+
+.contactSection{
+
+  padding: 20px 0;
+  grid-area: contactSection;
+  align-self: center;
+
+  display: grid;
+  grid-template-columns: 5% auto 5%;
+  grid-template-rows: auto;
+  grid-template-areas:
+      ". contactHeading ."
+      ". contactMessage ."
+      ". contactForm .";
+
+  background-color: $color-neutral-light;
+
+  .contactHeading{
+    grid-area: contactHeading;
+    padding: 20px 0;
+  }
+
+  .contactMessage{
+    grid-area: contactMessage;
+    padding: 0;
+  }
+
+  .contactForm{
+    grid-area: contactForm;
+    padding: 20px 0;
+  }
+
+  p, h2, h3, h4, label{
+
+  }
+}
+
+
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+
+    .contactSection{
+      grid-template-columns: auto 475px 50px 475px auto;
+      grid-template-areas:
+        ". contactMessage . contactForm .";
+
+      .contactMessage{
+        padding: 30px 0;
+        h3{
+          font-size: 3rem;
+        }
+
+        h4{
+          font-size: 2rem;
+        }
+      }
+
+      .contactForm{
+        grid-area: contactForm;
+      }
+    }
+
+}
+
+
+
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .contactSection {
+
+  }
+
+}

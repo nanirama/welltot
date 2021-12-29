@@ -1,0 +1,18 @@
+@import '../styles/variables';
+
+.container {
+  list-style: none;
+}
+
+.link {
+  color: initial;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &.active {
+    color: $color-primary;
+    font-weight: 600;
+  }
+}

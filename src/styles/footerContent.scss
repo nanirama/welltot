@@ -1,0 +1,120 @@
+@import './variables';
+
+
+footer {
+
+  // Below the bottom of the footer (for short pages and tall browsers)
+  box-shadow: 0 100vh 0 100vh $color-primary-dark;
+  background-color: $color-primary-dark;
+
+
+    .footerContent {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto;
+      align-items: center;
+      justify-content: stretch;
+      grid-template-areas:
+      "footer1"
+      "footer2";
+
+
+
+
+      .footer1 {
+        grid-area: footer1;
+        place-self: stretch;
+
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        align-items: stretch;
+        justify-items: stretch;
+        justify-content: stretch;
+        grid-template-areas:
+        "question"
+        "links"
+        "affirmxh";
+        padding: 30px 0;
+        background-color: #dddddd;
+        li, p, h1, h2, h3, h4, a, a:link, a:hover, a:visited, a:active{
+          color: $color-copy;
+        }
+        .question {
+          grid-area: question;
+        }
+
+        .links {
+          grid-area: links;
+          ul{
+            list-style: none;
+            padding: 0;
+            li{
+              padding: 5px 0;
+            }
+          }
+        }
+
+        .affirmxh {
+          grid-area: affirmxh;
+        }
+
+        .footer1Content{
+          border-bottom: 1px solid $color-copy;
+
+          &:last-child {
+            border-bottom: none;
+          }
+          .container{
+            text-align: center;
+          }
+        }
+
+      }
+
+      .footer2 {
+        grid-area: footer2;
+        place-self: center;
+        padding: 15px;
+        text-align: center;
+
+        color: $color-copy-inverse;
+
+        li, p, h1, h2, h3, h4, a, a:link, a:hover, a:visited, a:active{
+          color: $color-copy-inverse;
+        }
+      }
+
+    }
+  }
+
+
+@media only screen and (min-width: 992px) {
+
+  footer {
+      .footerContent {
+        .footer1 {
+          grid-template-columns: auto 300px 300px 300px auto;
+          grid-template-areas:
+        ". question links affirmxh .";
+
+
+          .footer1Content{
+            border: none;
+            border-right: 1px solid $color-copy;
+
+            &:last-child{
+              border: none;
+            }
+            .container{
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              height: 100%
+            }
+          }
+
+        }
+      }
+    }
+}

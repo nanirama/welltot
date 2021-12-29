@@ -1,0 +1,60 @@
+@import './variables';
+
+.sectionTotLifeSummary {
+  display: grid;
+  grid-template-columns: 5% auto 5%;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+  grid-template-areas:
+    '. headCopy .'
+    '. topics .'
+    '. articleSummaries .';
+  margin: 30px 0;
+
+  .headCopy {
+    grid-area: headCopy;
+    text-align: center;
+    h2,
+    h4 {
+      margin: 0;
+    }
+  }
+  .topics {
+    grid-area: topics;
+    align-self: center;
+    margin: 30px 0 0 0;
+    ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+      li {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 20px;
+
+        &.active {
+          color: $color-primary;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .articleSummaries {
+    grid-area: articleSummaries;
+  }
+}
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+  .sectionTotLifeSummary {
+    grid-template-columns: auto 800px auto;
+  }
+}
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .sectionTotLifeSummary {
+  }
+}

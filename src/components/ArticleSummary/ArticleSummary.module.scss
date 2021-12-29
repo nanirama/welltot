@@ -1,0 +1,15 @@
+.container {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.title {
+  margin: 0;
+}
+
+.trim {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

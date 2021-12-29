@@ -1,0 +1,137 @@
+@import './variables';
+
+
+@keyframes fadeAnimation {
+  0%   { opacity:0; }
+  10%  { opacity:1; }
+  20%  { opacity:1; }
+  30%  { opacity:0; }
+  100% { opacity:0; }
+}
+
+
+.sectionBillboard{
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: stretch;
+  grid-template-areas:
+      "img1";
+  position: relative;
+
+  .img1{
+    grid-area: img1;
+    z-index: 100;
+  }
+  .copyMain{
+    grid-area: copyMain;
+    z-index: 110;
+    position: absolute;
+    width: 35%;
+    left: 60%;
+    top: 5%;
+
+    h1{
+      font-size: 3.5vw;
+      margin: 0 0 5px 0;
+    }
+    h2{
+      font-size: 2.5vw;
+      margin: 0;
+    }
+    h1, h2{
+      color: $color-copy-inverse;
+    }
+
+  }
+  .phrase1{
+    top: 15%;
+    left: 5%;
+    width: 10%;
+    animation-delay: 0s;
+  }
+  .phrase2{
+    top: 50%;
+    left: 10%;
+    animation-delay: 2s;
+  }
+  .phrase3{
+    top: 45%;
+    left: 75%;
+    width: 10%;
+    animation-delay: 4s;
+  }
+  .phrase4{
+    top: 30%;
+    left: 15%;
+    width: 15%;
+    animation-delay: 6s;
+  }
+  .phrase5{
+    top: 65%;
+    left: 80%;
+    width: 15%;
+    animation-delay: 8s;
+  }
+  .phrase{
+    position: absolute;
+    z-index: 110;
+    font-size: 1.5vw;
+    display: block;
+    opacity: 0;
+    animation-name: fadeAnimation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    p{
+      color:$color-copy-inverse;
+    }
+  }
+}
+
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+    .sectionBillboard{
+      grid-template-areas:
+      "img1";
+
+      .copyMain{
+        width: 35%;
+        left: 60%;
+        h1{
+          font-size: 3.5vw;
+        }
+        h2{
+          font-size: 2vw;
+          margin: 30px 0 0 0;
+        }
+      }
+      .phrase1{
+      }
+      .phrase2{
+      }
+      .phrase3{
+      }
+      .phrase4{
+      }
+      .phrase5{
+      }
+      .phrase{
+        display: block;
+      }
+    }
+
+
+}
+
+
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .sectionBillboard{
+
+
+
+  }
+}

@@ -1,0 +1,52 @@
+@import './variables';
+
+.sectionQuote1{
+  display: grid;
+  grid-template-columns: 5% auto 5%;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: stretch;
+  grid-template-areas:
+    ". quoteCopy ."
+    ". byLine .";
+  background-color: $color-neutral-light;
+  padding: 40px 0;
+
+  .quoteCopy{
+    grid-area: quoteCopy;
+    blockquote{
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+  .byLine{
+    grid-area: byLine;
+    margin: 0 0 0 40%;
+    p{
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+    }
+  }
+}
+
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+  .sectionQuote1{
+    grid-template-columns: auto 600px auto;
+
+
+
+  }
+}
+
+
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .sectionQuote1{
+
+
+
+  }
+}

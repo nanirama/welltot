@@ -1,0 +1,47 @@
+.page-content {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: max-content auto max-content;
+  grid-template-areas:
+    'page-header'
+    'page-body'
+    'page-footer';
+
+  .page-header {
+    grid-area: page-header;
+    width: 100vw;
+  }
+
+  .page-body {
+    grid-area: page-body;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .page-footer {
+    grid-area: page-footer;
+    width: 100vw;
+    overflow: hidden;
+  }
+}
+
+// Desktop media query
+@media only screen and (min-width: 992px) {
+  .page {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'page-header'
+      'page-header'
+      'page-body'
+      'page-footer';
+  }
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

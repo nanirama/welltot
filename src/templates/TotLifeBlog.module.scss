@@ -1,0 +1,40 @@
+@import '../styles/variables';
+
+.container {
+  margin-bottom: 2rem;
+
+  &:first-child {
+    margin-top: 2rem;
+  }
+}
+
+.image {
+  margin-bottom: 2rem;
+}
+
+.header {
+  > h1 {
+    margin-bottom: 0;
+  }
+
+  > p {
+    font-style: italic;
+  }
+}
+
+.content {
+  font-size: 16px;
+}
+
+.topic-header {
+  margin-bottom: 4rem !important;
+}
+
+.link {
+  font-weight: normal !important;
+  color: initial;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

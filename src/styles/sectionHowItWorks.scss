@@ -1,0 +1,57 @@
+@import './variables';
+
+.sectionHowItWorks{
+  display: grid;
+  grid-template-columns: 5% auto 5%;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: stretch;
+  grid-template-areas:
+    ". sectionHeader ."
+    ". steps ."
+    ". copyFootnote .";
+  padding: 40px 0;
+
+  .sectionHeader{
+    grid-area: sectionHeader;
+    text-align: center;
+  }
+
+  .steps{
+    grid-area: steps;
+    padding: 30px 0;
+    ol{
+      li{
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        padding: 20px 0;
+      }
+    }
+
+  }
+  .copyFootnote{
+    grid-area: copyFootnote;
+  }
+}
+
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+  .sectionHowItWorks{
+    grid-template-columns: auto 700px auto;
+
+
+
+  }
+}
+
+
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .sectionHowItWorks{
+
+
+
+  }
+}
