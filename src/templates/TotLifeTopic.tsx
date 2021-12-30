@@ -9,12 +9,12 @@ import TopicList from '../components/TopicList';
 
 type PageContext = { uid: string; title: string };
 
-const TotLifeCategory = ({ data, pageContext }: PageProps<TopicPageQuery, PageContext>) => {
+const TotLifeCategory = () => {
   return (
     <LayoutMain>
-      <SEO title={`${pageContext.title} Category`} />
+      {/* <SEO title={`${pageContext.title} Category`} /> */}
 
-      <div className="sectionTotLifeSummary">
+      {/* <div className="sectionTotLifeSummary">
         <Header className="headCopy" />
 
         <div className="topics">
@@ -22,25 +22,23 @@ const TotLifeCategory = ({ data, pageContext }: PageProps<TopicPageQuery, PageCo
         </div>
 
         <div className="articleSummaries">
-          {/* {data.allPrismicBlog.edges.map(({ node }) => (
+          {data.allPrismicBlog.edges.map(({ node }) => (
             <ArticleSummary key={node.id} node={node} />
-          ))} */}
+          ))}
         </div>
-      </div>
+      </div> */}
     </LayoutMain>
   );
 };
 
-export const query = graphql`
-  query TopicPage($uid: String) {
-    allPrismicBlog(filter: { data: { tags1: { elemMatch: { tags: { uid: { eq: $uid } } } } } }) {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query TopicPage($uid: String) {
+//     allPrismicBlog(filter: { data: { tags1: { elemMatch: { tags: { uid: { eq: $uid } } } } } }) {
+//       edges {
+//         ...ArticleSummary
+//       }
+//     }
+//   }
+// `;
 
 export default TotLifeCategory;

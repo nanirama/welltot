@@ -27,16 +27,15 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 
   return (
     <LayoutMain>
-      <SEO article title={title} description={description} />
+      {/* <SEO article title={title} description={description} />
 
-      {/* Blog title and published date */}
-      {/* <Container as="section" textAlign="center" className={cls(styles.container, styles.header)}>
+
+      <Container as="section" textAlign="center" className={cls(styles.container, styles.header)}>
         <h1>{prismicBlog?.data?.title?.text}</h1>
         <p>Published on {prismicBlog?.last_publication_date}</p>
-      </Container> */}
+      </Container>
 
-      {/* Blog content and topics */}
-      {/* <Container as="section" className={styles.container}>
+      <Container as="section" className={styles.container}>
         {image && (
           <GatsbyImage
             image={image}
@@ -64,10 +63,8 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
             ))}
           </Grid.Column>
         </Grid>
-      </Container> */}
-
-      {/* Blod related content */}
-      {/* <Container as="section" className={styles.container}>
+      </Container>
+      <Container as="section" className={styles.container}>
         <ArticleRelated articles={allPrismicBlog.edges} />
       </Container> */}
     </LayoutMain>
@@ -88,7 +85,6 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 //         blog_image {
 //           alt
 //           gatsbyImageData(
-//             imgixParams: { crop: "edges", fit: "crop" }
 //             width: 1200
 //             aspectRatio: 1.333
 //           )
@@ -125,7 +121,6 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 //             blog_image {
 //               alt
 //               gatsbyImageData(
-//                 imgixParams: { crop: "edges", fit: "crop" }
 //                 width: 400
 //                 aspectRatio: 1.333
 //               )

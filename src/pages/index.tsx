@@ -14,7 +14,7 @@ import SEO from '../components/SEO';
 
 import '../styles/homepage.scss';
 
-const IndexPage = ({ data: { allPrismicBlog } }: PageProps<IndexPageQuery>) => {
+const IndexPage = () => {
   return (
     <LayoutMain>
       <SEO bodyClassname="homepage" />
@@ -38,9 +38,9 @@ const IndexPage = ({ data: { allPrismicBlog } }: PageProps<IndexPageQuery>) => {
         <div className="homepage-sectionQuote1">
           <SectionQuote1 />
         </div>
-        <div className="homepage-sectionTotLifeSummary">
-          {/* <SectionTotLifeSummary blogs={allPrismicBlog} /> */}
-        </div>
+        {/* <div className="homepage-sectionTotLifeSummary">
+          <SectionTotLifeSummary blogs={allPrismicBlog} />
+        </div> */}
         <div className="homepage-sectionBuyNow">
           <SectionBuyNow />
         </div>
@@ -49,14 +49,20 @@ const IndexPage = ({ data: { allPrismicBlog } }: PageProps<IndexPageQuery>) => {
   );
 };
 
-export const query = graphql`
-  query IndexPage {
-    allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
-      group(field: data___tags1___tags___uid) {
-        fieldValue
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query IndexPage {
+//     allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
+//       group(field: data___tags1___tags___uid) {
+//         edges {
+//           ...ArticleSummary
+//         }
+//         fieldValue
+//       }
+//       edges {
+//         ...ArticleSummary
+//       }
+//     }
+//   }
+// `;
 
 export default IndexPage;

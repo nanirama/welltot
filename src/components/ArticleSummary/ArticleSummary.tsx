@@ -48,7 +48,6 @@ const ArticleSummary = ({ node: { data, url } }: ArticleSummaryFragment) => {
 //         blog_image {
 //           alt
 //           gatsbyImageData(
-//             imgixParams: { crop: "edges", fit: "crop" }
 //             width: 300
 //             aspectRatio: 1.333
 //           )

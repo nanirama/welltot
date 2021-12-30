@@ -7,12 +7,12 @@ import LayoutMain from '../components/layouts/LayoutMain';
 import SEO from '../components/SEO';
 import TopicList from '../components/TopicList';
 
-const TotLifePage = ({ data: { allPrismicBlog } }: PageProps<TotLifePageQuery>) => {
+const TotLifePage = () => {
   return (
     <LayoutMain>
       <SEO title="Tot Life" description="Tot Life" />
 
-      <div className="sectionTotLifeSummary">
+      {/* <div className="sectionTotLifeSummary">
         <Header className="headCopy" />
 
         <div className="topics">
@@ -20,25 +20,23 @@ const TotLifePage = ({ data: { allPrismicBlog } }: PageProps<TotLifePageQuery>) 
         </div>
 
         <div className="articleSummaries">
-          {/* {allPrismicBlog.edges.map(({ node }) => (
+          {allPrismicBlog.edges.map(({ node }) => (
             <ArticleSummary key={node.id} node={node} />
-          ))} */}
+          ))}
         </div>
-      </div>
+      </div> */}
     </LayoutMain>
   );
 };
 
-export const query = graphql`
-  query TotLifePage {
-    allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query TotLifePage {
+//     allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
+//       edges {
+//         ...ArticleSummary
+//       }
+//     }
+//   }
+// `;
 
 export default TotLifePage;

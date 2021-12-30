@@ -15,7 +15,15 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-graphql-codegen`,
+    // `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
