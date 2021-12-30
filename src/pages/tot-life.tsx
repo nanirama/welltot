@@ -20,9 +20,9 @@ const TotLifePage = ({ data: { allPrismicBlog } }: PageProps<TotLifePageQuery>) 
         </div>
 
         <div className="articleSummaries">
-          {allPrismicBlog.edges.map(({ node }) => (
+          {/* {allPrismicBlog.edges.map(({ node }) => (
             <ArticleSummary key={node.id} node={node} />
-          ))}
+          ))} */}
         </div>
       </div>
     </LayoutMain>
@@ -33,7 +33,9 @@ export const query = graphql`
   query TotLifePage {
     allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
       edges {
-        ...ArticleSummary
+        node {
+          id
+        }
       }
     }
   }

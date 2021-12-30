@@ -39,7 +39,7 @@ const IndexPage = ({ data: { allPrismicBlog } }: PageProps<IndexPageQuery>) => {
           <SectionQuote1 />
         </div>
         <div className="homepage-sectionTotLifeSummary">
-          <SectionTotLifeSummary blogs={allPrismicBlog} />
+          {/* <SectionTotLifeSummary blogs={allPrismicBlog} /> */}
         </div>
         <div className="homepage-sectionBuyNow">
           <SectionBuyNow />
@@ -53,13 +53,7 @@ export const query = graphql`
   query IndexPage {
     allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
       group(field: data___tags1___tags___uid) {
-        edges {
-          ...ArticleSummary
-        }
         fieldValue
-      }
-      edges {
-        ...ArticleSummary
       }
     }
   }

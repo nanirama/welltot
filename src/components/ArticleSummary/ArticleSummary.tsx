@@ -13,7 +13,7 @@ const ArticleSummary = ({ node: { data, url } }: ArticleSummaryFragment) => {
 
   return (
     <Grid stackable className={styles.container} columns={2}>
-      {image && (
+      {/* {image && (
         <Grid.Column width={5}>
           <GatsbyImage image={image} alt={alt} loading="lazy" />
         </Grid.Column>
@@ -27,35 +27,35 @@ const ArticleSummary = ({ node: { data, url } }: ArticleSummaryFragment) => {
         </h3>
 
         <p className={styles.trim}>{data?.body?.text}</p>
-      </Grid.Column>
+      </Grid.Column> */}
     </Grid>
   );
 };
 
 // INFO: Create Article summary fragment, this query will not run in Gatsby
-export const query = graphql`
-  fragment ArticleSummary on PrismicBlogEdge {
-    node {
-      id
-      url
-      data {
-        title {
-          text
-        }
-        body {
-          text
-        }
-        blog_image {
-          alt
-          gatsbyImageData(
-            imgixParams: { crop: "edges", fit: "crop" }
-            width: 300
-            aspectRatio: 1.333
-          )
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   fragment ArticleSummary on PrismicBlogEdge {
+//     node {
+//       id
+//       url
+//       data {
+//         title {
+//           text
+//         }
+//         body {
+//           text
+//         }
+//         blog_image {
+//           alt
+//           gatsbyImageData(
+//             imgixParams: { crop: "edges", fit: "crop" }
+//             width: 300
+//             aspectRatio: 1.333
+//           )
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default ArticleSummary;

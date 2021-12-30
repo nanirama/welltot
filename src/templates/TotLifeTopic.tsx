@@ -22,9 +22,9 @@ const TotLifeCategory = ({ data, pageContext }: PageProps<TopicPageQuery, PageCo
         </div>
 
         <div className="articleSummaries">
-          {data.allPrismicBlog.edges.map(({ node }) => (
+          {/* {data.allPrismicBlog.edges.map(({ node }) => (
             <ArticleSummary key={node.id} node={node} />
-          ))}
+          ))} */}
         </div>
       </div>
     </LayoutMain>
@@ -35,7 +35,9 @@ export const query = graphql`
   query TopicPage($uid: String) {
     allPrismicBlog(filter: { data: { tags1: { elemMatch: { tags: { uid: { eq: $uid } } } } } }) {
       edges {
-        ...ArticleSummary
+        node {
+          id
+        }
       }
     }
   }

@@ -30,13 +30,13 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
       <SEO article title={title} description={description} />
 
       {/* Blog title and published date */}
-      <Container as="section" textAlign="center" className={cls(styles.container, styles.header)}>
+      {/* <Container as="section" textAlign="center" className={cls(styles.container, styles.header)}>
         <h1>{prismicBlog?.data?.title?.text}</h1>
         <p>Published on {prismicBlog?.last_publication_date}</p>
-      </Container>
+      </Container> */}
 
       {/* Blog content and topics */}
-      <Container as="section" className={styles.container}>
+      {/* <Container as="section" className={styles.container}>
         {image && (
           <GatsbyImage
             image={image}
@@ -64,77 +64,77 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
             ))}
           </Grid.Column>
         </Grid>
-      </Container>
+      </Container> */}
 
       {/* Blod related content */}
-      <Container as="section" className={styles.container}>
+      {/* <Container as="section" className={styles.container}>
         <ArticleRelated articles={allPrismicBlog.edges} />
-      </Container>
+      </Container> */}
     </LayoutMain>
   );
 };
 
-export const query = graphql`
-  query BlogPage($uid: String, $tags: [ID]) {
-    prismicBlog(uid: { eq: $uid }) {
-      last_publication_date(formatString: "LL")
-      data {
-        title {
-          text
-        }
-        body {
-          raw
-        }
-        blog_image {
-          alt
-          gatsbyImageData(
-            imgixParams: { crop: "edges", fit: "crop" }
-            width: 1200
-            aspectRatio: 1.333
-          )
-        }
-        tags1 {
-          tags {
-            document {
-              ... on PrismicBlogTopic {
-                url
-                data {
-                  topic_name {
-                    text
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    # Get title and image of latest 3 blogs with same tags (but not the article itself)
-    allPrismicBlog(
-      filter: { data: { tags1: { elemMatch: { tags: { id: { in: $tags } } } } }, uid: { ne: $uid } }
-      limit: 3
-      sort: { fields: last_publication_date, order: DESC }
-    ) {
-      edges {
-        node {
-          url
-          data {
-            title {
-              text
-            }
-            blog_image {
-              alt
-              gatsbyImageData(
-                imgixParams: { crop: "edges", fit: "crop" }
-                width: 400
-                aspectRatio: 1.333
-              )
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query BlogPage($uid: String, $tags: [ID]) {
+//     prismicBlog(uid: { eq: $uid }) {
+//       last_publication_date(formatString: "LL")
+//       data {
+//         title {
+//           text
+//         }
+//         body {
+//           raw
+//         }
+//         blog_image {
+//           alt
+//           gatsbyImageData(
+//             imgixParams: { crop: "edges", fit: "crop" }
+//             width: 1200
+//             aspectRatio: 1.333
+//           )
+//         }
+//         tags1 {
+//           tags {
+//             document {
+//               ... on PrismicBlogTopic {
+//                 url
+//                 data {
+//                   topic_name {
+//                     text
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     # Get title and image of latest 3 blogs with same tags (but not the article itself)
+//     allPrismicBlog(
+//       filter: { data: { tags1: { elemMatch: { tags: { id: { in: $tags } } } } }, uid: { ne: $uid } }
+//       limit: 3
+//       sort: { fields: last_publication_date, order: DESC }
+//     ) {
+//       edges {
+//         node {
+//           url
+//           data {
+//             title {
+//               text
+//             }
+//             blog_image {
+//               alt
+//               gatsbyImageData(
+//                 imgixParams: { crop: "edges", fit: "crop" }
+//                 width: 400
+//                 aspectRatio: 1.333
+//               )
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default TotLifeBlog;
