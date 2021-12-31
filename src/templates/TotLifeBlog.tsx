@@ -12,18 +12,18 @@ import * as styles from './TotLifeBlog.module.scss';
 
 type PageContext = { uid: string; tags: string[] };
 
-const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
-  const { allPrismicBlog, prismicBlog } = data;
-  const image = getImage(prismicBlog?.data?.blog_image?.gatsbyImageData);
-  const description = useMemo(() => {
-    // Get the first paragraph as description
-    const firstParagraph = prismicBlog?.data?.body?.raw.find(
-      ({ type }: { type: string }) => type === 'paragraph',
-    );
-    return firstParagraph?.text ?? '';
-  }, [prismicBlog]);
+const TotLifeBlog = () => {
+  // const { allPrismicBlog, prismicBlog } = data;
+  // const image = getImage(prismicBlog?.data?.blog_image?.gatsbyImageData);
+  // const description = useMemo(() => {
+  //   // Get the first paragraph as description
+  //   const firstParagraph = prismicBlog?.data?.body?.raw.find(
+  //     ({ type }: { type: string }) => type === 'paragraph',
+  //   );
+  //   return firstParagraph?.text ?? '';
+  // }, [prismicBlog]);
 
-  const title = prismicBlog?.data?.title?.text ?? '';
+  // const title = prismicBlog?.data?.title?.text ?? '';
 
   return (
     <LayoutMain>
