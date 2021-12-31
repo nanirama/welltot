@@ -5027,7 +5027,6 @@ export type BlogPageQueryVariables = Exact<{
 
 export type BlogPageAndBlogPageVariables = Exact<{
   uid?: Maybe<Scalars['String']>;
-  tags?: Maybe<Array<Maybe<Scalars['ID']>> | Maybe<Scalars['ID']>>;
 }>;
 
 export type BlogPageAndBlogPage = { prismicBlog?: Maybe<(
@@ -5036,10 +5035,7 @@ export type BlogPageAndBlogPage = { prismicBlog?: Maybe<(
           Pick<PrismicBlogTopic, 'url'>
           & { data: { topic_name?: Maybe<Pick<PrismicStructuredTextType, 'text'>> } }
         )> }> }>>> } }
-)>, allPrismicBlog: { edges: Array<{ node: (
-      Pick<PrismicBlog, 'url'>
-      & { data: { title?: Maybe<Pick<PrismicStructuredTextType, 'text'>>, blog_image?: Maybe<Pick<PrismicBlogDataBlogImageImageType, 'alt' | 'gatsbyImageData'>> } }
-    ) }> } };
+)>  };
 
 
 export type BlogPageQuery = { prismicBlog?: Maybe<(

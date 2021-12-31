@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { RichText } from 'prismic-reactjs';
 import React, { useMemo } from 'react';
 import { Container, Grid, Header } from 'semantic-ui-react';
-import { BlogPageAndBlogPage } from '../../graphql-types';
+import { BlogPageQuery } from '../../graphql-types';
 import ArticleRelated from '../components/ArticleRelated/ArticleRelated';
 import LayoutMain from '../components/layouts/LayoutMain';
 import SEO from '../components/SEO';
@@ -12,10 +12,11 @@ import * as styles from './TotLifeBlog.module.scss';
 
 type PageContext = { uid: string; tags: string[] };
 
-const TotLifeBlog = ({ data }: PageProps<BlogPageAndBlogPage, PageContext>) => {
-  const { allPrismicBlog, prismicBlog } = data;
+const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
+  const { prismicBlog } = data;
   const image = getImage(prismicBlog?.data?.blog_image?.gatsbyImageData);
   const description = useMemo(() => {
+    // Get the first paragraph as description
     const firstParagraph = prismicBlog?.data?.body?.raw.find(
       ({ type }: { type: string }) => type === 'paragraph',
     );
@@ -64,14 +65,14 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageAndBlogPage, PageContext>) => {
         </Grid>
       </Container>
       <Container as="section" className={styles.container}>
-        <ArticleRelated articles={allPrismicBlog.edges} />
+        {/* <ArticleRelated articles={allPrismicBlog.edges} /> */}
       </Container>
     </LayoutMain>
   );
 };
 
 export const query = graphql`
-  query BlogPageAndBlogPage($uid: String, $tags: [ID]) {
+  query blogPageAndBlogPage($uid: String) {
     prismicBlog(uid: { eq: $uid }) {
       last_publication_date(formatString: "LL")
       data {
@@ -99,29 +100,6 @@ export const query = graphql`
                   }
                 }
               }
-            }
-          }
-        }
-      }
-    }
-    allPrismicBlog(
-      filter: { data: { tags1: { elemMatch: { tags: { id: { in: $tags } } } } }, uid: { ne: $uid } }
-      limit: 3
-      sort: { fields: last_publication_date, order: DESC }
-    ) {
-      edges {
-        node {
-          url
-          data {
-            title {
-              text
-            }
-            blog_image {
-              alt
-              gatsbyImageData(
-                width: 400
-                aspectRatio: 1.333
-              )
             }
           }
         }
