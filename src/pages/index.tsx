@@ -57,6 +57,7 @@ export const query = graphql`
           node {
             id
             uid
+            url
             data {
               title {
                 text
@@ -77,6 +78,7 @@ export const query = graphql`
         node {
           id
           uid
+          url
           data {
             title {
               text
