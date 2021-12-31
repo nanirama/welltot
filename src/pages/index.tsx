@@ -14,7 +14,7 @@ import SEO from '../components/SEO';
 
 import '../styles/homepage.scss';
 
-const IndexPage = () => {
+const IndexPage = ({ data: { allPrismicBlog } }: PageProps<IndexPageQuery>) => {
   return (
     <LayoutMain>
       <SEO bodyClassname="homepage" />
@@ -38,9 +38,9 @@ const IndexPage = () => {
         <div className="homepage-sectionQuote1">
           <SectionQuote1 />
         </div>
-        {/* <div className="homepage-sectionTotLifeSummary">
+        <div className="homepage-sectionTotLifeSummary">
           <SectionTotLifeSummary blogs={allPrismicBlog} />
-        </div> */}
+        </div>
         <div className="homepage-sectionBuyNow">
           <SectionBuyNow />
         </div>
@@ -49,20 +49,50 @@ const IndexPage = () => {
   );
 };
 
-// export const query = graphql`
-//   query IndexPage {
-//     allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
-//       group(field: data___tags1___tags___uid) {
-//         edges {
-//           ...ArticleSummary
-//         }
-//         fieldValue
-//       }
-//       edges {
-//         ...ArticleSummary
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query IndexPage {
+    allPrismicBlog(sort: {fields: last_publication_date, order: DESC}) {
+      group(field: data___tags1___tags___uid) {
+        edges {
+          node {
+            id
+            uid
+            data {
+              title {
+                text
+              }
+              body {
+                text
+              }
+              blog_image {
+                alt
+                gatsbyImageData(layout: CONSTRAINED, width: 300, aspectRatio: 1.333)
+              }
+            }
+          }
+        }
+        fieldValue
+      }
+      edges {
+        node {
+          id
+          uid
+          data {
+            title {
+              text
+            }
+            body {
+              text
+            }
+            blog_image {
+              alt
+              gatsbyImageData(layout: CONSTRAINED, width: 300, aspectRatio: 1.333)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

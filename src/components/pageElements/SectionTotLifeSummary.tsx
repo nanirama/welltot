@@ -29,7 +29,7 @@ const SectionTotLifeSummary = ({ blogs }: Props) => {
 
       <div className="articleSummaries">
         {filteredBlogs.map(({ node }) => (
-          <ArticleSummary key={node.id} node={node} />
+          <ArticleSummary key={node.id} id={node.id} node={node} />
         ))}
       </div>
     </div>
