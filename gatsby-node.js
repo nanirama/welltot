@@ -70,7 +70,6 @@ const createIndividualBlogPage = async (graphql, createPage) => {
 
   const component = path.resolve(`src/templates/TotLifeBlog.tsx`);
   data.allPrismicBlog.edges.forEach((edge) => {
-    console.log('Blog Id',edge.node.uid)
     createPage({
       component,
       path: edge.node.url,

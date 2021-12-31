@@ -35,23 +35,7 @@ export const query = graphql`
   query TopicPage($uid: String) {
     allPrismicBlog(filter: { data: { tags1: { elemMatch: { tags: { uid: { eq: $uid } } } } } }) {
       edges {
-        node {
-          id
-          uid
-          url
-          data {
-            title {
-              text
-            }
-            body {
-              text
-            }
-            blog_image {
-              alt
-              gatsbyImageData(layout: CONSTRAINED, width: 300, aspectRatio: 1.333)
-            }
-          }
-        }
+        ...ArticleSummary
       }
     }
   }
