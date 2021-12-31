@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { RichText } from 'prismic-reactjs';
 import React, { useMemo } from 'react';
 import { Container, Grid, Header } from 'semantic-ui-react';
-import { BlogPageQuery } from '../../graphql-types';
+import { BlogPageAndBlogPage } from '../../graphql-types';
 import ArticleRelated from '../components/ArticleRelated/ArticleRelated';
 import LayoutMain from '../components/layouts/LayoutMain';
 import SEO from '../components/SEO';
@@ -12,7 +12,7 @@ import * as styles from './TotLifeBlog.module.scss';
 
 type PageContext = { uid: string; tags: string[] };
 
-const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
+const TotLifeBlog = ({ data }: PageProps<BlogPageAndBlogPage, PageContext>) => {
   const { allPrismicBlog, prismicBlog } = data;
   const image = getImage(prismicBlog?.data?.blog_image?.gatsbyImageData);
   const description = useMemo(() => {
@@ -71,7 +71,7 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 };
 
 export const query = graphql`
-  query blogPageAndBlogPage($uid: String, $tags: [ID]) {
+  query BlogPageAndBlogPage($uid: String, $tags: [ID]) {
     prismicBlog(uid: { eq: $uid }) {
       last_publication_date(formatString: "LL")
       data {
