@@ -9,12 +9,12 @@ import TopicList from '../components/TopicList';
 
 type PageContext = { uid: string; title: string };
 
-const TotLifeCategory = () => {
+const TotLifeCategory = ({ data, pageContext }: PageProps<TopicPageQuery, PageContext>) => {
   return (
     <LayoutMain>
-      {/* <SEO title={`${pageContext.title} Category`} /> */}
+      <SEO title={`${pageContext.title} Category`} />
 
-      {/* <div className="sectionTotLifeSummary">
+      <div className="sectionTotLifeSummary">
         <Header className="headCopy" />
 
         <div className="topics">
@@ -26,19 +26,34 @@ const TotLifeCategory = () => {
             <ArticleSummary key={node.id} node={node} />
           ))}
         </div>
-      </div> */}
+      </div>
     </LayoutMain>
   );
 };
 
-// export const query = graphql`
-//   query TopicPage($uid: String) {
-//     allPrismicBlog(filter: { data: { tags1: { elemMatch: { tags: { uid: { eq: $uid } } } } } }) {
-//       edges {
-//         ...ArticleSummary
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query TopicPage($uid: String) {
+    allPrismicBlog(filter: { data: { tags1: { elemMatch: { tags: { uid: { eq: $uid } } } } } }) {
+      edges {
+        node {
+          id
+          uid
+          data {
+            title {
+              text
+            }
+            body {
+              text
+            }
+            blog_image {
+              alt
+              gatsbyImageData(layout: CONSTRAINED, width: 300, aspectRatio: 1.333)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default TotLifeCategory;
