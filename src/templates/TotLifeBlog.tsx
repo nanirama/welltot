@@ -1,7 +1,6 @@
 import cls from 'classnames';
 import { graphql, Link, PageProps } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { RichText } from 'prismic-reactjs';
 import React, { useMemo } from 'react';
 import { Container, Grid, Header } from 'semantic-ui-react';
 import { BlogPageQuery } from '../../graphql-types';
@@ -16,7 +15,6 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
   const { allPrismicBlog, prismicBlog } = data;
   const image = getImage(prismicBlog?.data?.blog_image?.gatsbyImageData);
   const description = useMemo(() => {
-    // Get the first paragraph as description
     const firstParagraph = prismicBlog?.data?.body?.raw.find(
       ({ type }: { type: string }) => type === 'paragraph',
     );
@@ -47,7 +45,7 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 
         <Grid doubling columns={2}>
           <Grid.Column as="article" className={styles.content} width={12}>
-            <RichText render={prismicBlog?.data?.body?.raw} />
+            <div dangerouslySetInnerHTML={{ __html: prismicBlog?.data?.body?.html }} ></div>
           </Grid.Column>
 
           <Grid.Column as="aside" width={4} textAlign="center">
@@ -84,11 +82,12 @@ export const query = graphql`
         }
         body {
           raw
+          html
+          text
         }
         blog_image {
           alt
           gatsbyImageData(
-            imgixParams: { crop: "edges", fit: "crop" }
             width: 1200
             aspectRatio: 1.333
           )
@@ -125,7 +124,6 @@ export const query = graphql`
             blog_image {
               alt
               gatsbyImageData(
-                imgixParams: { crop: "edges", fit: "crop" }
                 width: 400
                 aspectRatio: 1.333
               )

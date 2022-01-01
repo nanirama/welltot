@@ -54,12 +54,44 @@ export const query = graphql`
     allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
       group(field: data___tags1___tags___uid) {
         edges {
-          ...ArticleSummary
+          node {
+            id
+            uid
+            url
+            data {
+              title {
+                text
+              }
+              body {
+                text
+              }
+              blog_image {
+                alt
+                gatsbyImageData(layout: CONSTRAINED, width: 300, aspectRatio: 1.333)
+              }
+            }
+          }
         }
         fieldValue
       }
       edges {
-        ...ArticleSummary
+        node {
+          id
+          uid
+          url
+          data {
+            title {
+              text
+            }
+            body {
+              text
+            }
+            blog_image {
+              alt
+              gatsbyImageData(layout: CONSTRAINED, width: 300, aspectRatio: 1.333)
+            }
+          }
+        }
       }
     }
   }
