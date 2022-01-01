@@ -1,6 +1,5 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { TotLifePageQuery } from '../../graphql-types';
 import ArticleSummary from '../components/ArticleSummary';
 import Header from '../components/Header';
 import LayoutMain from '../components/layouts/LayoutMain';

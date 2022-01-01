@@ -1,6 +1,5 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { IndexPageQuery } from '../../graphql-types';
 import LayoutMain from '../components/layouts/LayoutMain';
 import SectionBillboard from '../components/pageElements/SectionBillboard';
 import SectionBuyNow from '../components/pageElements/SectionBuyNow';
