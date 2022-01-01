@@ -1,0 +1,92 @@
+@import './variables';
+
+.faqpage{
+  .container-faqpage {
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "faqpage-sectionBillboard"
+    "faqpage-sectionRtb"
+    "faqpage-sectionWhyChooseWelltot"
+    "faqpage-sectionProductImages"
+    "faqpage-sectionHowItWorks"
+    "faqpage-sectionQuote1"
+    "faqpage-sectionTotLifeSummary"
+    "faqpage-sectionBuyNow";
+
+
+    .faqpage-sectionBillboard{
+      grid-area: faqpage-sectionBillboard;
+    }
+
+    .faqpage-sectionRtb{
+      grid-area: faqpage-sectionRtb;
+    }
+
+    .faqpage-sectionWhyChooseWelltot{
+      grid-area: faqpage-sectionWhyChooseWelltot;
+    }
+
+    .faqpage-sectionProductImages{
+      grid-area: faqpage-sectionProductImages;
+    }
+
+    .faqpage-sectionHowItWorks{
+      grid-area: faqpage-sectionHowItWorks;
+    }
+
+    .faqpage-sectionQuote1{
+      grid-area: faqpage-sectionQuote1;
+    }
+
+    .faqpage-sectionTotLifeSummary{
+      grid-area: faqpage-sectionTotLifeSummary;
+    }
+
+    .faqpage-sectionBuyNow{
+      grid-area: faqpage-sectionBuyNow;
+    }
+
+}
+
+
+
+
+}
+
+
+
+
+// Small Tablet media query
+@media only screen and (min-width: 650px) {
+  .faqpage{
+    .container-faqpage {
+
+
+    }
+  }
+}
+
+
+// Laptop media query
+@media only screen and (min-width: 1000px) {
+  .faqpage{
+    .container-faqpage {
+
+
+    }
+  }
+}
+
+
+// Desktop media query
+@media only screen and (min-width: 1450px) {
+  .faqpage{
+    .container-faqpage {
+
+
+    }
+  }
+}
