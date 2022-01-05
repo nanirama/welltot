@@ -6,7 +6,7 @@ import LayoutMain from '../components/layouts/LayoutMain';
 import SEO from '../components/SEO';
 import TopicList from '../components/TopicList';
 
-const TotLifePage = ({ data: { allPrismicBlog } }: PageProps<TotLifePageQuery>) => {
+const TotLifePage = ({ data: { allPrismicWelltotBlogBlog } }: PageProps<TotLifePageQuery>) => {
   return (
     <LayoutMain>
       <SEO title="Tot Life" description="Tot Life" />
@@ -19,7 +19,7 @@ const TotLifePage = ({ data: { allPrismicBlog } }: PageProps<TotLifePageQuery>) 
         </div>
 
         <div className="articleSummaries">
-          {allPrismicBlog.edges.map(({ node }) => (
+          {allPrismicWelltotBlogBlog.edges.map(({ node }) => (
             <ArticleSummary key={node.id} node={node} />
           ))}
         </div>
@@ -30,7 +30,7 @@ const TotLifePage = ({ data: { allPrismicBlog } }: PageProps<TotLifePageQuery>) 
 
 export const query = graphql`
   query TotLifePage {
-    allPrismicBlog(sort: { fields: last_publication_date, order: DESC }) {
+    allPrismicWelltotBlogBlog(sort: { fields: last_publication_date, order: DESC }) {
       edges {
         node {
           id

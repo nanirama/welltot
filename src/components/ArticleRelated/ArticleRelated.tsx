@@ -3,7 +3,7 @@ import { Grid, Header } from 'semantic-ui-react';
 import { BlogPageQuery } from '../../../graphql-types';
 import ArticleRelatedItem from './ArticleRelatedItem';
 
-type Props = { articles: BlogPageQuery['allPrismicBlog']['edges'] };
+type Props = { articles: BlogPageQuery['allPrismicWelltotBlogBlog']['edges'] };
 
 const ArticleRelated = ({ articles }: Props) => {
   return (

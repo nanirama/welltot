@@ -6,7 +6,7 @@ import TopicList from '../TopicList';
 
 import '../../styles/sectionTotLifeSummary.scss';
 
-type Props = { blogs: IndexPageQuery['allPrismicBlog'] };
+type Props = { blogs: IndexPageQuery['allPrismicWelltotBlogBlog'] };
 
 const SectionTotLifeSummary = ({ blogs }: Props) => {
   const [topicId, setTopicId] = useState('');

@@ -47,8 +47,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
 const createIndividualBlogPage = async (graphql, createPage) => {
   const { data, errors } = await graphql(`
-    query PrismicBlogPage {
-      allPrismicBlog {
+    query PrismicWelltotBlogBlogPage {
+      allPrismicWelltotBlogBlog {
         edges {
           node {
             url
@@ -69,7 +69,7 @@ const createIndividualBlogPage = async (graphql, createPage) => {
   if (errors) throw errors;
 
   const component = path.resolve(`src/templates/TotLifeBlog.tsx`);
-  data.allPrismicBlog.edges.forEach((edge) => {
+  data.allPrismicWelltotBlogBlog.edges.forEach((edge) => {
     createPage({
       component,
       path: edge.node.url,
@@ -83,8 +83,8 @@ const createIndividualBlogPage = async (graphql, createPage) => {
 
 const createIndividualTopics = async (graphql, createPage) => {
   const { data, errors } = await graphql(`
-    query PrismicBlogTopic {
-      allPrismicBlogTopic {
+    query PrismicWelltotBlogBlogTopic {
+      allPrismicWelltotBlogBlogTopic {
         edges {
           node {
             url
@@ -101,7 +101,7 @@ const createIndividualTopics = async (graphql, createPage) => {
   `);
   if (errors) throw errors;
   const component = path.resolve(`src/templates/TotLifeTopic.tsx`);
-  data.allPrismicBlogTopic.edges.forEach((edge) => {
+  data.allPrismicWelltotBlogBlogTopic.edges.forEach((edge) => {
     createPage({
       component,
       path: edge.node.url,

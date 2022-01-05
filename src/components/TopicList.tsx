@@ -11,7 +11,7 @@ type Props = {
 };
 
 const TopicList = ({ topicId, onTopicClick }: Props) => {
-  const { allPrismicBlogTopic } = useStaticQuery<TopicListQuery>(query);
+  const { allPrismicWelltotBlogBlogTopic } = useStaticQuery<TopicListQuery>(query);
 
   const handleClick =
     (newTopic: string, topicUrl: string) =>
@@ -33,7 +33,7 @@ const TopicList = ({ topicId, onTopicClick }: Props) => {
           All
         </Link>
       </li>
-      {allPrismicBlogTopic.nodes.map(({ data, uid, url }) => (
+      {allPrismicWelltotBlogBlogTopic.nodes.map(({ data, uid, url }) => (
         <li key={data?.topic_name?.text}>
           <Link
             to={url ?? ''}
@@ -50,7 +50,7 @@ const TopicList = ({ topicId, onTopicClick }: Props) => {
 
 const query = graphql`
   query TopicList {
-    allPrismicBlogTopic {
+    allPrismicWelltotBlogBlogTopic {
       nodes {
         uid
         url

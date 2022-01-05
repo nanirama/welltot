@@ -3,7 +3,7 @@ import { graphql, Link, PageProps } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useMemo } from 'react';
 import { Container, Grid, Header } from 'semantic-ui-react';
-import { BlogPageQuery } from '../../graphql-types';
+//import { BlogPageQuery } from '../../graphql-types';
 import ArticleRelated from '../components/ArticleRelated/ArticleRelated';
 import LayoutMain from '../components/layouts/LayoutMain';
 import SEO from '../components/SEO';
@@ -12,16 +12,16 @@ import * as styles from './TotLifeBlog.module.scss';
 type PageContext = { uid: string; tags: string[] };
 
 const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
-  const { allPrismicBlog, prismicBlog } = data;
-  const image = getImage(prismicBlog?.data?.blog_image?.gatsbyImageData);
+  const { allPrismicWelltotBlogBlog, prismicWelltotBlogBlog } = data;
+  const image = getImage(prismicWelltotBlogBlog?.data?.blog_image?.gatsbyImageData);
   const description = useMemo(() => {
-    const firstParagraph = prismicBlog?.data?.body?.raw.find(
+    const firstParagraph = prismicWelltotBlogBlog?.data?.body?.raw.find(
       ({ type }: { type: string }) => type === 'paragraph',
     );
     return firstParagraph?.text ?? '';
-  }, [prismicBlog]);
+  }, [prismicWelltotBlogBlog]);
 
-  const title = prismicBlog?.data?.title?.text ?? '';
+  const title = prismicWelltotBlogBlog?.data?.title?.text ?? '';
 
   return (
     <LayoutMain>
@@ -29,8 +29,8 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 
       {/* Blog title and published date */}
       <Container as="section" textAlign="center" className={cls(styles.container, styles.header)}>
-        <h1>{prismicBlog?.data?.title?.text}</h1>
-        <p>Published on {prismicBlog?.last_publication_date}</p>
+        <h1>{prismicWelltotBlogBlog?.data?.title?.text}</h1>
+        <p>Published on {prismicWelltotBlogBlog?.last_publication_date}</p>
       </Container>
 
       {/* Blog content and topics */}
@@ -38,14 +38,14 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
         {image && (
           <GatsbyImage
             image={image}
-            alt={prismicBlog?.data?.blog_image?.alt ?? ''}
+            alt={prismicWelltotBlogBlog?.data?.blog_image?.alt ?? ''}
             className={styles.image}
           />
         )}
 
         <Grid doubling columns={2}>
           <Grid.Column as="article" className={styles.content} width={12}>
-            <div dangerouslySetInnerHTML={{ __html: prismicBlog?.data?.body?.html }} ></div>
+            <div dangerouslySetInnerHTML={{ __html: prismicWelltotBlogBlog?.data?.body?.html }} ></div>
           </Grid.Column>
 
           <Grid.Column as="aside" width={4} textAlign="center">
@@ -53,7 +53,7 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
               Topics
             </Header>
 
-            {prismicBlog?.data?.tags1?.map((tag, index) => (
+            {prismicWelltotBlogBlog?.data?.tags1?.map((tag, index) => (
               <Header key={index}>
                 <Link to={tag?.tags?.document?.url!} className={styles.link}>
                   {tag?.tags?.document?.data?.topic_name?.text}
@@ -66,7 +66,7 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 
       {/* Blod related content */}
       <Container as="section" className={styles.container}>
-        <ArticleRelated articles={allPrismicBlog.edges} />
+        <ArticleRelated articles={allPrismicWelltotBlogBlog.edges} />
       </Container>
     </LayoutMain>
   );
@@ -74,7 +74,7 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
 
 export const query = graphql`
   query BlogPage($uid: String, $tags: [ID]) {
-    prismicBlog(uid: { eq: $uid }) {
+    prismicWelltotBlogBlog(uid: { eq: $uid }) {
       last_publication_date(formatString: "LL")
       data {
         title {
@@ -95,7 +95,7 @@ export const query = graphql`
         tags1 {
           tags {
             document {
-              ... on PrismicBlogTopic {
+              ... on PrismicWelltotBlogBlogTopic {
                 url
                 data {
                   topic_name {
@@ -109,7 +109,7 @@ export const query = graphql`
       }
     }
     # Get title and image of latest 3 blogs with same tags (but not the article itself)
-    allPrismicBlog(
+    allPrismicWelltotBlogBlog(
       filter: { data: { tags1: { elemMatch: { tags: { id: { in: $tags } } } } }, uid: { ne: $uid } }
       limit: 3
       sort: { fields: last_publication_date, order: DESC }

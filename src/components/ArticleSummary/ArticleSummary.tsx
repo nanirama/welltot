@@ -2,10 +2,9 @@ import { graphql, Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import { ArticleSummaryFragment } from '../../../graphql-types';
 import * as styles from './ArticleSummary.module.scss';
 
-const ArticleSummary = ({ node: { data, url } }: ArticleSummaryFragment) => {
+const ArticleSummary = ({ node: { data, url } }: ArticleSummary) => {
   const alt = data?.blog_image?.alt ?? '';
   const image = data?.blog_image?.gatsbyImageData
     ? getImage(data.blog_image.gatsbyImageData)
@@ -34,7 +33,7 @@ const ArticleSummary = ({ node: { data, url } }: ArticleSummaryFragment) => {
 
 // INFO: Create Article summary fragment, this query will not run in Gatsby
 export const query = graphql`
-  fragment ArticleSummary on PrismicBlogEdge {
+  fragment ArticleSummary on PrismicWelltotBlogBlogEdge {
     node {
       id
       url

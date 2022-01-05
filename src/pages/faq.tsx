@@ -17,7 +17,7 @@ const FaqPage = (props: PageProps) => {
 
       <div className="container-faqpage">
         <HeaderFaq className="headCopy" style={{margin:"50px 0px"}} />
-         <SectionFaq data={data.allPrismicInstruction} />       
+         <SectionFaq data={data.allPrismicWelltotIfuInstruction} />
       </div>
     </LayoutMain>
   );
@@ -25,7 +25,7 @@ const FaqPage = (props: PageProps) => {
 
 export const query = graphql`
   query FaqPage {
-    allPrismicInstruction(sort: {fields: last_publication_date, order: DESC}) {
+    allPrismicWelltotIfuInstruction(sort: {fields: last_publication_date, order: DESC}) {
         edges {
           node {
             uid
