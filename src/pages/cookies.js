@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet"
 import LayoutMain from "../components/layouts/LayoutMain"
 import CookiePolicyFullContent from "../components/cookiePolicy/CookiePolicyFullContent"
 
-
 class CookiePage extends React.Component {
   constructor(props) {
     super(props);

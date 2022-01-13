@@ -2,12 +2,14 @@ import cls from 'classnames';
 import { graphql, Link, PageProps } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useMemo } from 'react';
-import { Container, Grid, Header } from 'semantic-ui-react';
-//import { BlogPageQuery } from '../../graphql-types';
+import Grid from "@material-ui/core/Grid";
 import ArticleRelated from '../components/ArticleRelated/ArticleRelated';
 import LayoutMain from '../components/layouts/LayoutMain';
 import SEO from '../components/SEO';
 import * as styles from './TotLifeBlog.module.scss';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 type PageContext = { uid: string; tags: string[] };
 
@@ -22,19 +24,47 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
   }, [prismicWelltotBlogBlog]);
 
   const title = prismicWelltotBlogBlog?.data?.title?.text ?? '';
-
+ const useStyles = makeStyles({
+        container:{
+            maxWidth: '1157px',
+            padding:'0 15px',
+        },
+        topcontent:{
+          textAlign:'center',
+          margin:'2rem 0',
+        },
+        heading:{
+          fontSize:'2rem',
+        },
+         heading2:{
+          fontSize:'2rem',
+          marginBottom:'55px',
+        },
+        published:{
+          fontStyle:'italic',
+        },
+        sidebar:{
+          textAlign:'center',
+        },
+        link:{
+          fontSize:'18px',
+          marginBottom:'20px',
+        },
+    });
+        const classes = useStyles();
   return (
     <LayoutMain>
       <SEO article title={title} description={description} />
 
       {/* Blog title and published date */}
-      <Container as="section" textAlign="center" className={cls(styles.container, styles.header)}>
-        <h1>{prismicWelltotBlogBlog?.data?.title?.text}</h1>
-        <p>Published on {prismicWelltotBlogBlog?.last_publication_date}</p>
-      </Container>
+       <Container maxWidth="lg" className={classes.container}>
+      <div className={classes.topcontent}>
+        <Typography variant="h1" color="textSecondary" className={classes.heading}>{prismicWelltotBlogBlog?.data?.title?.text}</Typography>
+        <Typography variant="body1" color="textSecondary" className={classes.published}>Published on {prismicWelltotBlogBlog?.last_publication_date}</Typography>
+      </div>
 
       {/* Blog content and topics */}
-      <Container as="section" className={styles.container}>
+      <Grid>
         {image && (
           <GatsbyImage
             image={image}
@@ -43,30 +73,31 @@ const TotLifeBlog = ({ data }: PageProps<BlogPageQuery, PageContext>) => {
           />
         )}
 
-        <Grid doubling columns={2}>
-          <Grid.Column as="article" className={styles.content} width={12}>
+ <Grid container spacing={{ xs: 2, md: 3 }}>
+                <Grid item xs={12} sm={12} md={9} className={styles.content}>
             <div dangerouslySetInnerHTML={{ __html: prismicWelltotBlogBlog?.data?.body?.html }} ></div>
-          </Grid.Column>
+          </Grid>
 
-          <Grid.Column as="aside" width={4} textAlign="center">
-            <Header as="h1" className={styles.topicHeader}>
+ <Grid item xs={12} sm={12} md={3} className={classes.sidebar}>
+            <Typography variant="h1" color="textSecondary" className={classes.heading2}>
               Topics
-            </Header>
+            </Typography>
 
             {prismicWelltotBlogBlog?.data?.tags1?.map((tag, index) => (
-              <Header key={index}>
+              <Typography variant="h2" color="textSecondary" className={classes.link} key={index}>
                 <Link to={tag?.tags?.document?.url!} className={styles.link}>
                   {tag?.tags?.document?.data?.topic_name?.text}
                 </Link>
-              </Header>
+              </Typography>
             ))}
-          </Grid.Column>
+          </Grid>
         </Grid>
-      </Container>
+      </Grid>
 
       {/* Blod related content */}
-      <Container as="section" className={styles.container}>
-        <ArticleRelated articles={allPrismicWelltotBlogBlog.edges} />
+      <Grid className={styles.container}>
+        {/* <ArticleRelated articles={allPrismicWelltotBlogBlog.edges} /> */}
+      </Grid>
       </Container>
     </LayoutMain>
   );

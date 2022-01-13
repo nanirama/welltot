@@ -3,7 +3,7 @@ import HeaderContent from '../pageElements/HeaderContent';
 import FooterContent from '../pageElements/FooterContent';
 import CookiePolicyBanner from '../cookiePolicy/CookiePolicyBanner';
 // Semantic stylesheets
-import 'semantic-ui-css/semantic.min.css';
+
 import '../../styles/main.scss';
 import '../../styles/LayoutMain.scss';
 

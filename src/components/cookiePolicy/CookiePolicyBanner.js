@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import "../../styles/cookie-policy.scss"
 import CookiePolicyFullContent from "./CookiePolicyFullContent"
+import Typography from "@material-ui/core/Typography";
+import Button from '@material-ui/core/Button';
 
 // works with Google Tag Manager
 // allow-analytics-cookies
@@ -67,10 +69,13 @@ class CookiePolicyBanner extends React.Component {
       <div className="cookie-policy">
         <div className={classNameBanner}>
           <div className="cookie-policy-copy">
-            <p>We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept Cookies”, you consent to the use of all the cookies. However you may visit <Link to="/cookies">Cookie Settings</Link> to provide a controlled consent.</p>
+            <Typography variant="body1" color="textsecondary">We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept Cookies”, you consent to the use of all the cookies. However you may visit <Link to="/cookies">Cookie Settings</Link> to provide a controlled consent.</Typography>
           </div>
           <div className="cookie-policy-buttons">
-            <button className='cookie-policy-button' onClick={() => this.allowAllCookies()}>Accept Cookies</button>
+
+            {/* <button className='cookie-policy-button' onClick={() => this.allowAllCookies()}>Accept Cookies</button> */}
+            <Button color="primary" variant="button" className='cookie-policy-button' onClick={() => this.allowAllCookies()}>Accept Cookies</Button>
+
           </div>
         </div>
         <div className={classNameModal}><CookiePolicyFullContent /></div>

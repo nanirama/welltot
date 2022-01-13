@@ -1,11 +1,14 @@
 import React from "react"
 import "../../styles/cookie-policy.scss"
-
+import Typography from "@material-ui/core/Typography";
+// import makeStyles from "@material-ui/core/styles/makeStyles";
+import Button from '@material-ui/core/Button'
 
 // works with Google Tag Manager
 // allow-analytics-cookies
 // allow-marketing-cookies
 // allow-performance-cookies
+
 
 class CookiePolicy extends React.Component {
 
@@ -76,7 +79,6 @@ class CookiePolicy extends React.Component {
     this.getCookies();
   }
 
-
   render() {
 
     let classSwitchPerformance = 'switch';
@@ -110,55 +112,67 @@ class CookiePolicy extends React.Component {
       classSwitchMarketing += ' null';
     }
 
+
+// const useStyles = makeStyles({
+//   heading:{
+//  marginBottom:'10px'
+// }    
+// });
+
+// const classes = useStyles();
+
+
     return (
       <div className="cookie-policy-content cookie-policy">
 
         <div className='cookie-policy-heading'>
-          <h3>Cookie Information</h3>
-          <p>Cookies for this website are classified into four categories.</p>
-
-            <button className='cookie-policy-button' onClick={() => this.allowAllCookies()}>Allow All Cookies</button>
+          <Typography variant="h3" color="textsecondary">Cookie Information</Typography>
+          <Typography variant="body1" color="textsecondary">Cookies for this website are classified into four categories.</Typography>
+            {/* <button className='cookie-policy-button' onClick={() => this.allowAllCookies()}>Allow All Cookies</button> */}
+            <Button color="primary" variant="button" className='cookie-policy-button' onClick={() => this.allowAllCookies()}>Allow All Cookies</Button>
+       
+       
         </div>
 
 
         <div className='cookie-necessary-header cookies-header'>
-          <h4>Necessary Cookies</h4>
+          <Typography variant="h4" color="textsecondary">Necessary Cookies</Typography>
         </div>
         <div className="cookie-necessary-description">
-          <p>These cookies are essential in order to enable you to move around the website and use its features, such as accessing secure areas of the website. Without these cookies services you have asked for, like shopping baskets or e-billing, cannot be provided.</p>
+          <Typography variant="body1" color="textsecondary">These cookies are essential in order to enable you to move around the website and use its features, such as accessing secure areas of the website. Without these cookies services you have asked for, like shopping baskets or e-billing, cannot be provided.</Typography>
         </div>
 
 
         <div className='cookie-performance-header cookies-header'>
-          <h4>Performance Cookies</h4>
+          <Typography variant="h4" color="textsecondary">Performance Cookies</Typography>
         </div>        
         <div className={classSwitchPerformance}>
           <span className="slider" onClick={() => this.togglePerformanceCookie()}></span>
         </div>
         <div className="cookie-performance-description">
-          <p>These cookies collect information about how you use a website, like which pages you visited and which links you clicked on. None of this information can be used to identify you. It is all aggregated and, therefore, anonymized. Their sole purpose is to improve website functions.</p>
+          <Typography variant="body1" color="textsecondary">These cookies collect information about how you use a website, like which pages you visited and which links you clicked on. None of this information can be used to identify you. It is all aggregated and, therefore, anonymized. Their sole purpose is to improve website functions.</Typography>
         </div>
 
 
         <div className='cookie-analytics-header cookies-header'>
-          <h4>Analytics Cookies</h4>
+          <Typography variant="h4" color="textsecondary">Analytics Cookies</Typography>
         </div>        
         <div className={classSwitchAnalytics}>
           <span className="slider" onClick={() => this.toggleAnalyticsCookie()}></span>
         </div>
         <div className="cookie-analytics-description">
-          <p>A set of cookies to collect information and report about website usage statistics.</p>
+          <Typography variant="body1" color="textsecondary">A set of cookies to collect information and report about website usage statistics.</Typography>
         </div>
 
 
         <div className='cookie-marketing-header cookies-header'>
-          <h4>Marketing Cookies</h4>
+          <Typography variant="h4" color="textsecondary">Marketing Cookies</Typography>
         </div>        
         <div className={classSwitchMarketing}>
           <span className="slider" onClick={() => this.toggleMarketingCookie()}></span>
         </div>
         <div className="cookie-marketing-description">
-          <p>Any cookies used specifically to collect user personal data via analytics, ads, other embedded contents.</p>
+          <Typography variant="body1" color="textsecondary">Any cookies used specifically to collect user personal data via analytics, ads, other embedded contents.</Typography>
         </div>
 
 

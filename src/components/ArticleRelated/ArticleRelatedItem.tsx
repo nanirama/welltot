@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
-import { Grid, Header, Segment } from 'semantic-ui-react';
+import { Grid, Header, Segment } from '@material-ui/core';
 
 type Props = {
   title: string;
